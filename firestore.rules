@@ -1,0 +1,20 @@
+rules_version='2'
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /rsvp/{document} {
+      // Anyone can send an RSVP
+      allow create: if true;
+
+      // Nobody can read, update, or delete the list via the website
+      allow read, update, delete: if false;
+    }
+    match /game/lucky-doll/score/{document} {
+      // Anyone can read and write an score
+      allow create, read: if true;
+
+      // Nobody can update, or delete the list via the website
+      allow update, delete: if false;
+    }
+  }
+}
