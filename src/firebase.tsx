@@ -1,9 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import {
-  initializeAppCheck,
-  ReCaptchaEnterpriseProvider,
-} from "firebase/app-check";
+import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -22,9 +19,7 @@ if (typeof window !== "undefined") {
   // self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
 
   initializeAppCheck(app, {
-    provider: new ReCaptchaEnterpriseProvider(
-      import.meta.env.VITE_RECAPTCHA_SITE_KEY,
-    ),
+    provider: new ReCaptchaV3Provider(import.meta.env.VITE_RECAPTCHA_SITE_KEY),
     isTokenAutoRefreshEnabled: true, // Automatically refreshes the "passport"
   });
 }
