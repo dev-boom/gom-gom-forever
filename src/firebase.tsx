@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 
 // Initialize App Check
 if (typeof window !== "undefined") {
-  self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+  // self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
 
   initializeAppCheck(app, {
     provider: new ReCaptchaEnterpriseProvider(
